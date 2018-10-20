@@ -2,6 +2,7 @@ import React from 'react';
 import { List } from "antd";
 import "antd/dist/antd.css";
 import "../App.css";
+import TodoItemRemove from './TodoItemRemove';
 
 /* Notes on this compoenent;
 
@@ -11,13 +12,16 @@ import "../App.css";
 
 */
 
-const RenderList = ({passNewState}) => {
+const RenderList = ({passNewState, removeTodo}) => {
   return (
     <List
           locale={{ emptyText: "No todo items" }}
           dataSource={passNewState}
           renderItem={item => (
-            <List.Item>{item.content}</List.Item>
+            <TodoItemRemove
+              todo={item}
+              removeTodo={removeTodo}
+            />
           )}
         />
       ) 

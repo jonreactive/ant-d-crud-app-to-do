@@ -4,14 +4,14 @@ import "antd/dist/antd.css";
 import '../App.css';
 
 
-const InputField = (props) => {
+const InputField = ({handlePressEnter}) => {
   
   return (
       <div>
         <h1>Insert a task below</h1>
         
         <Input 
-          onPressEnter={props.handlePressEnter} 
+          onPressEnter={handlePressEnter} 
           placeholder="What needs to be done?" />
       </div>
   )

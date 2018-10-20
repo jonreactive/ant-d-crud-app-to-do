@@ -16,6 +16,7 @@ class Todo extends Component {
     }
     
   this.handlePressEnter = this.handlePressEnter.bind(this)
+  this.removeTodo = this.removeTodo.bind(this)
 
   }
   
@@ -37,13 +38,34 @@ class Todo extends Component {
       // Clear input
       e.target.value = "";
     };
-  
+    
+    
+  removeTodo = index => {
+   let newTodos = [...this.state.todos];
 
+   // Remove element
+   newTodos.splice(index, 1);
+
+   // Decrement greater indexes
+   for (let i = index; i < newTodos.length; i++) {
+     newTodos[i].index -= 1;
+   }
+
+   // Update state
+   this.setState({
+     todos: newTodos
+   });
+ };
+    
+    
   render() {
     return (
     <div className="todoContainer">
       <InputField handlePressEnter={this.handlePressEnter} />
-      <RenderList passNewState = {this.state.todos}/>
+      <RenderList 
+        passNewState = {this.state.todos}
+        removeTodo = {this.removeTodo}
+        />
     </div>  
       
     )
